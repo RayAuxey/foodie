@@ -1,0 +1,28 @@
+<style>
+  .header {
+    background: white;
+    box-shadow: 0 5px 5px #00000054;
+    height: 60px;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    padding: 0 3rem;
+    justify-content: space-between;
+  }
+
+  nav a {
+    margin-left: 1rem;
+    font-weight: 700;
+  }
+</style>
+<div class="header">
+  {{>logo}}
+  <nav>
+    <a href="/">Home</a>
+    <a href="/meal-packages">Meal Packages</a>
+    <a href="/login">Sign In</a>
+    <a href="/signup">Sign Up</a>
+  </nav>
+</div>

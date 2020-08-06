@@ -1,0 +1,53 @@
+<style>
+  .meals {
+    background: aliceblue;
+    padding: 4rem 0;
+  }
+
+  .top-meals-list {
+    display: flex;
+  }
+
+  .meal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 250px;
+    justify-content: space-between;
+  }
+
+  .meal img {
+    width: 200px;
+    height: 200px;
+  }
+
+  .meal .title {
+    font-weight: 600;
+  }
+
+  .meal .price {
+    font-weight: 600;
+    color: green;
+    justify-self: end;
+  }
+</style>
+<div class="meals">
+  <div class="inner">
+    <div class="top-meals">
+      <h2 class="text-center mb-2">Our chefs are making these right now!</h2>
+      <div class="sub-title text-center mb-4">You could be chowing down on any of these meals any time you choose -
+        seriously!
+        Order some (or all) of these meals and see why thousands of Canadians stock us in their fridge!</div>
+    </div>
+
+    <div class="top-meals-list">
+      {{#each topMeals}}
+      <div class="meal">
+        <img src="{{this.img}}" class=" mb-2">
+        <div class="title mb-1 text-center">{{this.title}}</div>
+        <div class="price">${{this.price}}</div>
+      </div>
+      {{/each}}
+    </div>
+  </div>
+</div>

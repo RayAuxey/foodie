@@ -1,0 +1,97 @@
+<style>
+  .cta {
+    font-size: 1.5em;
+    padding: 0.5rem 1rem;
+    background: #e8015a;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .cta:hover {
+    background: #a50140;
+  }
+
+  .pkgs {
+    background: aliceblue;
+  }
+
+  .package-list {
+    max-width: 1280px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    padding: 4rem 0;
+    margin: 0 auto;
+
+  }
+
+  .package {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 280px;
+  }
+
+  .package img {
+    width: 260px;
+    height: 260px;
+    border-radius: 5px;
+  }
+
+  .package .title {
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: 1.2em;
+  }
+
+  .package .desc {
+    font-weight: 400;
+    letter-spacing: 1px;
+    font-size: 1.2em;
+  }
+
+  .package .price {
+    font-style: italic;
+  }
+
+  .price .amount {
+    font-style: normal;
+    font-weight: 600;
+    font-size: larger;
+  }
+
+  .sed {
+    text-align: center;
+    font-size: 1.5em;
+    padding: 4rem 0;
+  }
+
+  .sed span {
+    font-style: italic;
+    font-weight: 600;
+  }
+</style>
+<div class="">
+  {{>header}}
+  {{>hero-packages}}
+  <div class="sed">Pick a package, choose your meals, achieve your goal - <span>it's that easy!</span></div>
+  <div class="pkgs">
+    <div class="package-list">
+      {{#each packages}}
+      <div class="package">
+        <img src="{{this.img}}" class="mb-2">
+        <div class="title mb-1">{{this.title}}</div>
+        <div class="desc mb-1 text-center">{{this.desc}}</div>
+        <button class="cta mb-1">View Package <i class="fas fa-chevron-right"></i> </button>
+        <div class="price mb-2">from <span class="amount">${{this.price}}</span></div>
+
+      </div>
+      {{/each}}
+    </div>
+  </div>
+
+  {{>footer}}
+</div>
