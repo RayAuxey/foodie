@@ -1,8 +1,20 @@
+require("dotenv").config();
+
 var createError = require("http-errors");
 var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
+var mongoose = require("mongoose");
+
+mongoose.connect(
+  `mongodb://admin:${process.env.DB_PASS}@cluster0-shard-00-00.uvo8o.mongodb.net:27017,cluster0-shard-00-01.uvo8o.mongodb.net:27017,cluster0-shard-00-02.uvo8o.mongodb.net:27017/foodapp?ssl=true&replicaSet=atlas-q5m1ov-shard-0&authSource=admin&retryWrites=true&w=majority`,
+  {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true,
+  }
+);
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
@@ -29,8 +41,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/", indexRouter);
-app.use("/users", usersRouter);
+const loggedInUser = {
+  loggedIn: false,
+  user: null,
+};
+
+app.use("/", indexRouter(loggedInUser));
+app.use("/users", usersRouter(loggedInUser));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -1,0 +1,24 @@
+<style>
+  .user {
+    display: flex;
+    align-items: center;
+  }
+
+  .logout {
+    margin-left: 3rem;
+
+  }
+</style>
+<div class="">
+  {{>header}}
+  <div style="height: calc(60px + 2rem);"></div>
+  <div class="inner">
+    <h1 class="mb-2">Shopping Cart</h1>
+    <div class="user">
+      <h3>{{fname}} {{lname}}</h3>
+      <div class="logout"><a href="/logout">Logout</a></div>
+    </div>
+
+  </div>
+  {{>footer}}
+</div>

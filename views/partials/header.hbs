@@ -1,6 +1,6 @@
 <style>
   .header {
-    background: white;
+    background: rgba(255, 255, 255, 0.699);
     box-shadow: 0 5px 5px #00000054;
     height: 60px;
     position: fixed;
@@ -10,6 +10,7 @@
     align-items: center;
     padding: 0 3rem;
     justify-content: space-between;
+    backdrop-filter: saturate(100%) blur(7px);
   }
 
   nav a {
@@ -18,11 +19,16 @@
   }
 </style>
 <div class="header">
-  {{>logo}}
+  <a href="/">{{>logo}}</a>
   <nav>
     <a href="/">Home</a>
     <a href="/meal-packages">Meal Packages</a>
+    {{#if loggedIn}}
+    <a href="/dashboard">Dashboard</a>
+    <a href="/shopping-cart">Shopping Cart</a>
+    {{else}}
     <a href="/login">Sign In</a>
     <a href="/signup">Sign Up</a>
+    {{/if}}
   </nav>
 </div>
